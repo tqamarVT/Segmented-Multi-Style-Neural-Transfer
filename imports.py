@@ -30,3 +30,25 @@ import itertools
 from itertools import chain
 import seaborn as sns
 import cv2
+
+from google.colab import drive
+drive.mount('/content/gdrive/')
+
+import sys
+prefix = '/content/gdrive/Shareddrives/'
+# modify "customized_path_to_project" 
+customized_path_to_your_homework = 'ADV COMPUTER VISION FINAL PROJECT/'
+sys_path = prefix + customized_path_to_your_homework
+sys.path.append(sys_path)
+print(sys_path)
+
+
+gpu_info = !nvidia-smi
+gpu_info = '\n'.join(gpu_info)
+if gpu_info.find('failed') >= 0:
+  print('Select the Runtime > "Change runtime type" menu to enable a GPU accelerator, ')
+  print('and then re-execute this cell.')
+else:
+  print(gpu_info)
+
+print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
